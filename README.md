@@ -7,10 +7,16 @@ Slack bot for monitoring and notification of filesystem events
 - watchdog
 - slacker
 
+## Install
+
+```
+$ pip install git+https://github.com/yagays/sleepdog
+```
+
 ## Usage
 
 ```sh
-$ python sleepdog.py --pattern .json --channel general --token <slack token> --dir log/
+$ sleepdog --pattern .json --channel general --token <slack token> --dir log/
 ```
 
 ## Author

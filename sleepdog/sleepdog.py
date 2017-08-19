@@ -37,14 +37,14 @@ class CreateFileHandler(FileSystemEventHandler):
             slack.chat.post_message(self.channel, message)
 
 
-if __name__ in "__main__":
-    base_dir = os.path.abspath(os.path.dirname(__file__))
+def main():
+    current_dir = os.getcwd()
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--pattern", default=".json", help="json name pattern to watch")
     parser.add_argument("--channel", default="general", help="channel to post")
     parser.add_argument("--token", required=True, help="slack token")
-    parser.add_argument("--dir", default=base_dir, help="target dir to watch")
+    parser.add_argument("--dir", default=current_dir, help="target dir to watch (default:current dir)")
     args = parser.parse_args()
 
     while True:
@@ -58,3 +58,7 @@ if __name__ in "__main__":
         except KeyboardInterrupt:
             observer.stop()
         observer.join()
+
+
+if __name__ in "__main__":
+    main()
